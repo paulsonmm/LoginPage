@@ -1,0 +1,55 @@
+    <%-include('header')-%>
+
+
+    <div class="text-center center-div" id="login">
+        <div class="container w-25 border py-5">
+        <div class="title pb-5">
+            <h2 class="font-weight-bold">Login system</h2>
+            <span>Login for the existing user</span>
+          <%if(locals.logout){ %>
+            <div class="alert alert-success text center">
+                <%=logout%>
+            </div>
+            <%}%>
+        </div>
+        <form name="myForm" action="/route/login" method="post" class="" >
+            <div class="form-group">
+                <!-- <small class="form-text text-muted lext-left">Registered email address</small> -->
+                <input type="email" class="form-control" placeholder="email" name="email">
+                <br>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password"
+                placeholder="password">
+            </div>
+            <br>
+            <button type="submit" class="btn  btn-success rounded-pill">Submit</button>
+            <% if(locals.invalid){%> 
+                <div class="alert alert-success text-center">
+                    <%=invalid %> 
+                </div>
+                <%}%> 
+        </form>
+        </div>
+        </div>
+        
+        <!-- validateForm -->
+        <script>
+            const form =document.querySelector("form")
+            const email=document.querySelector("input[type=email]")
+            const passwor=document.querySelector("input[type=password]")
+            console.log(email)
+            form.addEventListener("submit",onsubmitFunction);
+            function onsubmitFunction(event){
+                if(email.value===""||password.value===""){
+                    event.preventDefault();
+                    alert('Please fill the form')
+                    return false;
+                }
+            }
+        </script>
+
+
+
+
+    <%-include('footer')-%>
